@@ -144,16 +144,17 @@ ML_DIR="${APP_DIR}/machine-learning"
 GEO_DIR="${INSTALL_DIR}/geodata"
 mkdir -p {"${APP_DIR}","${UPLOAD_DIR}","${GEO_DIR}","${INSTALL_DIR}"/cache}
 
-msg_info "Installing GeoNames data"
-cd "$GEO_DIR"
-CURL_RETRIES=6 CURL_CONNECT_TO=30 curl_with_retry "https://download.geonames.org/export/dump/admin1CodesASCII.txt" "admin1CodesASCII.txt"
-CURL_RETRIES=6 CURL_CONNECT_TO=30 curl_with_retry "https://download.geonames.org/export/dump/admin2Codes.txt" "admin2Codes.txt"
-CURL_RETRIES=6 CURL_CONNECT_TO=30 curl_with_retry "https://download.geonames.org/export/dump/countryInfo.txt" "countryInfo.txt"
-CURL_RETRIES=6 CURL_CONNECT_TO=30 curl_with_retry "https://download.geonames.org/export/dump/cities500.zip" "cities500.zip"
-curl_with_retry "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson" "ne_10m_admin_0_countries.geojson"
-unzip -q cities500.zip
-date --iso-8601=seconds | tr -d "\n" >geodata-date.txt
-rm cities500.zip
+msg_info "Skip Installing GeoNames data"
+#msg_info "Installing GeoNames data"
+#cd "$GEO_DIR"
+#CURL_RETRIES=6 CURL_CONNECT_TO=30 curl_with_retry "https://download.geonames.org/export/dump/admin1CodesASCII.txt" "admin1CodesASCII.txt"
+#CURL_RETRIES=6 CURL_CONNECT_TO=30 curl_with_retry "https://download.geonames.org/export/dump/admin2Codes.txt" "admin2Codes.txt"
+#CURL_RETRIES=6 CURL_CONNECT_TO=30 curl_with_retry "https://download.geonames.org/export/dump/countryInfo.txt" "countryInfo.txt"
+#CURL_RETRIES=6 CURL_CONNECT_TO=30 curl_with_retry "https://download.geonames.org/export/dump/cities500.zip" "cities500.zip"
+#curl_with_retry "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson" "ne_10m_admin_0_countries.geojson"
+#unzip -q cities500.zip
+#date --iso-8601=seconds | tr -d "\n" >geodata-date.txt
+#rm cities500.zip
 cd ~
 msg_ok "Installed GeoNames data"
 
